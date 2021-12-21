@@ -7,14 +7,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  ///Images
   AssetImage circle = AssetImage('images/circle.png');
   AssetImage cross = AssetImage('images/cross.png');
   AssetImage edit = AssetImage('images/edit.png');
 
+  ///Var Bool
   bool isCross = true;
 
+  ///List String for GameState
   List<String> gameState;
 
+  ///Init State
   @override
   void initState() {
     super.initState();
@@ -33,6 +37,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  ///Dialouge
   AlertStyle alertStyle = AlertStyle(
     animationType: AnimationType.grow,
     animationDuration: Duration(
@@ -47,6 +52,7 @@ class _HomePageState extends State<HomePage> {
     ),
   );
 
+  ///PlayGame
   void playGame(int index) {
     if (gameState[index] == 'empty') {
       setState(() {
@@ -61,6 +67,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  ///WinBox
   alertDialogueBoxForWin(context, index) {
     Alert(
       closeFunction: resetGame,
@@ -88,6 +95,7 @@ class _HomePageState extends State<HomePage> {
     ).show();
   }
 
+  ///DrawBox
   alertDialogueBoxForDraw(context) {
     Alert(
       context: context,
@@ -126,6 +134,7 @@ class _HomePageState extends State<HomePage> {
     ).show();
   }
 
+  ///CheckWin
   void checkWin() {
     if ((this.gameState[0] != 'empty') &&
         (this.gameState[0] == this.gameState[1]) &&
@@ -191,6 +200,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  ///GetImage
   getImage(String value) {
     switch (value) {
       case ('empty'):
@@ -206,6 +216,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  ///Reseting State
   void resetGame() {
     setState(() {
       this.gameState = [
@@ -222,6 +233,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  ///Main Body
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -263,22 +275,24 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          MaterialButton(
-            minWidth: 230.0,
-            height: 50.0,
-            color: Theme.of(context).primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(60.0),
+          Padding(
+            padding: const EdgeInsets.only(
+              bottom: 5,
             ),
-            onPressed: () {
-              this.resetGame();
-            },
-            child: Text(
-              'Reset Game',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 27.0,
-                fontWeight: FontWeight.w700,
+            child: MaterialButton(
+              minWidth: 230.0,
+              height: 50.0,
+              color: Theme.of(context).primaryColor,
+              onPressed: () {
+                this.resetGame();
+              },
+              child: Text(
+                'Reset Game',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),
