@@ -3,6 +3,10 @@
 A new Flutter project.
 
 ## Getting Started
+## Screenshots
+
+![WhatsApp Image 2022-01-21 at 7 24 02 PM](https://user-images.githubusercontent.com/89317342/150543361-50b1f651-2a07-40b9-9b40-479b75c6ad1f.jpeg)
+
 
 This project is a starting point for a Flutter application.
 
