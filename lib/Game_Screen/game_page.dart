@@ -519,7 +519,9 @@ class _GameState extends State<Game> {
                   shape: StadiumBorder(),
                   splashColor: Colors.red,
                   color: Colors.blue,
-                  onPressed: () {},
+                  onPressed: () {
+                    resetGame();
+                  },
                   child: Text(
                     'Reset Game',
                     style: TextStyle(
