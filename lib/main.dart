@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/Main_Screens/home_page.dart';
+import 'package:tic_tac_toe/Game_Screen/game_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       ///Home
-      home: HomePage(),
+      home: Game(),
     );
   }
 }
