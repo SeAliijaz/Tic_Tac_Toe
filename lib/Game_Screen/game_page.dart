@@ -122,23 +122,41 @@ class _GameState extends State<Game> {
     });
   }
 
+  void resetAllGame() {
+    setState(() {
+      gameEnd = false;
+      playerX = 0;
+      playerO = 0;
+      inPlay = 1;
+      box1 = '';
+      box2 = '';
+      box3 = '';
+      box4 = '';
+      box5 = '';
+      box6 = '';
+      box7 = '';
+      box8 = '';
+      box9 = '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final Size s = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ///Logo Image
               Image.asset(
                 'images/tic_tac_toe.png',
                 height: 200,
               ),
 
               Container(
-                height: MediaQuery.of(context).size.width,
-                width: MediaQuery.of(context).size.width,
+                height: s.width,
+                width: s.width,
                 margin: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.transparent.withOpacity(0.1),
@@ -294,7 +312,6 @@ class _GameState extends State<Game> {
                                         box5 = 'O';
                                         inPlay *= -1;
                                       }
-
                                       checkWin();
                                     }
                                   });
@@ -514,28 +531,47 @@ class _GameState extends State<Game> {
               ),
 
               ///Reset Button
-              Expanded(
-                child: MaterialButton(
-                  shape: StadiumBorder(),
-                  splashColor: Colors.red,
-                  color: Colors.blue,
-                  onPressed: () {
-                    resetGame();
-                  },
-                  child: Text(
-                    'Reset Game',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )
+              _resetGameButton(s),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _resetGameButton(Size s) {
+    return Expanded(
+        child: Padding(
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
+      child: InkWell(
+        splashColor: Colors.red,
+        onTap: () {
+          resetGame();
+        },
+        onLongPress: () {
+          resetAllGame();
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(50),
+          ),
+          height: s.height * 0.5,
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              'Reset Game',
+              style: TextStyle(
+                fontSize: 20.5,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+    ));
   }
 }
